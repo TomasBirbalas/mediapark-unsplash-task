@@ -4,7 +4,6 @@ import Images from "./images";
 
 function Content() {
   const { searchResult } = useContext(SearchContext);
-  console.log(searchResult);
 
   return (
     <div>{searchResult.length > 0 && <Images images={searchResult} />}</div>
