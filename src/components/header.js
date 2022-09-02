@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import api from "../api/search";
+import { SearchContext } from "../SearchContext";
 
 function Header() {
   const [searchQuery, setSearchQuery] = useState("");
+
+  const { setSearchResult } = useContext(SearchContext);
 
   const handleSubmit = () => {
     const fetchPhotos = async () => {
@@ -10,7 +13,9 @@ function Header() {
         const response = await api.get(
           `search/photos?client_id=${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}&page=1&per_page=20&query=${searchQuery}`
         );
-        console.log(response.data);
+        const result = await response.data;
+        console.log(result);
+        setSearchResult(result.results);
       } catch (err) {}
     };
     fetchPhotos();
@@ -24,12 +29,13 @@ function Header() {
           type="text"
           placeholder="Search..."
           onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyPress={(event) => {
+            if (event.key === "Enter") {
+              handleSubmit();
+            }
+          }}
         />
-        <input
-          type="button"
-          className="fa-solid fa-magnifying-glass"
-          onClick={handleSubmit}
-        />
+        <input type="button" onClick={handleSubmit} />
       </div>
     </header>
   );
