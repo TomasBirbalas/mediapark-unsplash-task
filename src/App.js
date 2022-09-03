@@ -1,22 +1,14 @@
-import { useState, useMemo } from "react";
-import Content from "./components/content";
-import Header from "./components/header";
-import { SearchContext } from "./SearchContext";
+import Content from "./components/Content";
+import Header from "./components/Header";
+import { DataProvider } from "./SearchContext";
 
 function App() {
-  const [searchResult, setSearchResult] = useState([]);
-
-  const providerValue = useMemo(
-    () => ({ searchResult, setSearchResult }),
-    [searchResult, setSearchResult]
-  );
-
   return (
     <div className="App">
-      <SearchContext.Provider value={providerValue}>
+      <DataProvider>
         <Header />
         <Content />
-      </SearchContext.Provider>
+      </DataProvider>
     </div>
   );
 }
