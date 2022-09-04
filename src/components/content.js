@@ -24,7 +24,6 @@ function Content() {
         </InfiniteScroll>
       )}
     </>
-    // <div>{searchResult.length > 0 && <Images images={searchResult} />}</div>
   );
 }
 
