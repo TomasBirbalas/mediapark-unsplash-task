@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import SearchContext from "../SearchContext";
-import Search from "./Search";
+import { Search } from "./Search";
 
-function Header() {
+export const Header = () => {
   const { handleSubmit } = useContext(SearchContext);
 
   return (
@@ -10,12 +10,13 @@ function Header() {
       <h1>Unsplash-Demo</h1>
       <form
         className="search-form"
-        onSubmit={(e) => handleSubmit(e.preventDefault())}
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
       >
         <Search />
       </form>
     </header>
   );
-}
-
-export default Header;
+};
