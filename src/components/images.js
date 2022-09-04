@@ -2,7 +2,14 @@ import React from "react";
 import SingleImage from "./SingleImage";
 
 function Images({ images }) {
-  return images.map((image) => <SingleImage key={image.id} image={image} />);
+  return (
+    <div className="grid-wrapper">
+      {images.map((image) => (
+        <SingleImage key={image.id} image={image} />
+      ))}
+      ;
+    </div>
+  );
 }
 
 export default Images;
