@@ -7,7 +7,7 @@ function Content() {
   const { searchResult, handleSubmit } = useContext(SearchContext);
 
   return (
-    <>
+    <div className="container">
       {searchResult.length > 0 && (
         <InfiniteScroll
           dataLength={searchResult.length} //This is important field to render the next data
@@ -23,7 +23,7 @@ function Content() {
           <Images images={searchResult} />
         </InfiniteScroll>
       )}
-    </>
+    </div>
   );
 }
 
