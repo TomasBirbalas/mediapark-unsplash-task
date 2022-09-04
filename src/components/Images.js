@@ -1,7 +1,7 @@
 import React from "react";
-import SingleImage from "./SingleImage";
+import { SingleImage } from "./SingleImage";
 
-function Images({ images }) {
+export const Images = ({ images }) => {
   return (
     <div className="grid-wrapper">
       {images.map((image) => (
@@ -9,6 +9,4 @@ function Images({ images }) {
       ))}
     </div>
   );
-}
-
-export default Images;
+};
