@@ -1,10 +1,10 @@
-import Content from "../components/Content";
-import Header from "../components/Header";
+import { Header } from "../components/Header";
+import { Content } from "../components/Content";
 import { DataProvider } from "../SearchContext";
 
 import "../stylesheets/css/home.min.css";
 
-function Home() {
+export const Home = () => {
   return (
     <>
       <DataProvider>
@@ -13,6 +13,4 @@ function Home() {
       </DataProvider>
     </>
   );
-}
-
-export default Home;
+};

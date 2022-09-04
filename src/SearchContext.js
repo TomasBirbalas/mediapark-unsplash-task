@@ -5,7 +5,6 @@ import useLocalStorage from "./hooks/useLocalStorage";
 const SearchContext = createContext({});
 
 export const DataProvider = ({ children }) => {
-  const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -14,7 +13,6 @@ export const DataProvider = ({ children }) => {
 
   const fetchPhotos = useCallback(
     async (page, searchQuery) => {
-      setLoading(true);
       try {
         const requestUrl = `search/photos?client_id=${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}&page=${page}&query=${searchQuery}`;
         const response = await api.get(requestUrl, {
@@ -31,7 +29,6 @@ export const DataProvider = ({ children }) => {
             return [...previousPhotos, ...result.results];
           }
         });
-        setLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -42,14 +39,12 @@ export const DataProvider = ({ children }) => {
   const handleSubmit = () => {
     const newPage = page + 1;
     setPage(newPage);
-    console.log(newPage);
     fetchPhotos(newPage, searchQuery);
     setQueries((previousQuery) => {
       if (searchQuery.length > 0) {
         const newArray = previousQuery.filter(
           (e) => e.toLowerCase() !== searchQuery.toLocaleLowerCase()
         );
-        console.log(newArray);
         return [...newArray, searchQuery];
       } else {
         return [...previousQuery];

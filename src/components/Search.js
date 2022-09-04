@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import SearchContext from "../SearchContext";
-import Suggestions from "./Suggestions";
+import { Suggestions } from "./Suggestions";
 
-function Search() {
+export const Search = () => {
   const { searchQuery, setSearchQuery, handleSubmit } =
     useContext(SearchContext);
   const [inputStatus, setInputStatus] = useState(false);
@@ -18,7 +18,7 @@ function Search() {
           onChange={(e) => setSearchQuery(e.target.value)}
           onClick={(e) => setInputStatus(true)}
           onBlur={(e) => setInputStatus(false)}
-          onKeyPress={(event) => (event.key === "Enter" ? handleSubmit() : "")}
+          onKeyPress={(event) => event.key === "Enter" && handleSubmit()}
         />
         <Suggestions inputStatus={inputStatus} />
       </div>
@@ -27,6 +27,4 @@ function Search() {
       </button>
     </>
   );
-}
-
-export default Search;
+};

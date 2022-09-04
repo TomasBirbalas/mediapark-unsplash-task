@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import SearchContext from "../SearchContext";
 
-function Suggestions({ inputStatus }) {
+export const Suggestions = ({ inputStatus }) => {
   const { setSearchQuery } = useContext(SearchContext);
 
   const getLatestSearchQueries = (key, numberOfMaxSuggestions) => {
@@ -10,8 +10,10 @@ function Suggestions({ inputStatus }) {
     if (queriesArray) {
       latestSuggestions = JSON.parse(queriesArray);
       latestSuggestions = latestSuggestions.slice(-numberOfMaxSuggestions);
+      return latestSuggestions;
+    } else {
+      return [];
     }
-    return latestSuggestions;
   };
   const suggestionsArray = getLatestSearchQueries("search-queries", 5);
 
@@ -34,6 +36,4 @@ function Suggestions({ inputStatus }) {
       {suggestions}
     </ul>
   );
-}
-
-export default Suggestions;
+};
