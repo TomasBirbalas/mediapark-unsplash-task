@@ -1,6 +1,5 @@
 import React, { useState, useEffect, createContext, useCallback } from "react";
 import api from "./api/search";
-import Header from "./components/Header";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 const SearchContext = createContext({});
@@ -48,7 +47,7 @@ export const DataProvider = ({ children }) => {
     setQueries((previousQuery) => {
       const isQueryExist = previousQuery.includes(searchQuery);
 
-      if (!isQueryExist) {
+      if (!isQueryExist && searchQuery.length > 0) {
         return [...previousQuery, searchQuery];
       } else {
         return [...previousQuery];
@@ -63,6 +62,7 @@ export const DataProvider = ({ children }) => {
   return (
     <SearchContext.Provider
       value={{
+        searchQuery,
         setSearchQuery,
         handleSubmit,
         searchResult,
