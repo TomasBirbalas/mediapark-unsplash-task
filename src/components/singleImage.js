@@ -1,8 +1,6 @@
 import React from "react";
 
 function SingleImage({ image }) {
-  console.log(image);
-
   const imageSpan = (image) => {
     if (image.height / image.width >= 1.4) {
       return "h-2";

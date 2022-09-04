@@ -7,7 +7,6 @@ function Images({ images }) {
       {images.map((image) => (
         <SingleImage key={image.id} image={image} />
       ))}
-      ;
     </div>
   );
 }
