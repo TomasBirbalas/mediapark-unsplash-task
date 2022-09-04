@@ -1,11 +1,13 @@
 import React from "react";
 
-function SingleImage({ image }) {
+export const SingleImage = ({ image }) => {
   const imageSpan = (image) => {
     if (image.height / image.width >= 1.4) {
       return "h-2";
     } else if (image.height / image.width <= 1) {
       return "w-2";
+    } else {
+      return "";
     }
   };
 
@@ -14,6 +16,4 @@ function SingleImage({ image }) {
       <img src={image.urls.small} alt={image.alt_description} />
     </div>
   );
-}
-
-export default SingleImage;
+};
