@@ -9,20 +9,28 @@ function Header() {
   return (
     <header>
       <h1>Unsplash-Demo</h1>
-      <div>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          onKeyPress={(event) => {
-            if (event.key === "Enter") {
-              handleSubmit();
-            }
-          }}
-        />
+      <div className="search-bar">
+        <form
+          className="search"
+          onSubmit={(e) => handleSubmit(e.preventDefault())}
+        >
+          <input
+            className="input-search"
+            type="text"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyPress={(event) => {
+              if (event.key === "Enter") {
+                handleSubmit();
+              }
+            }}
+          />
+          <button className="btn-search" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
         <Suggestions />
-        <input type="button" onClick={handleSubmit} />
       </div>
     </header>
   );
