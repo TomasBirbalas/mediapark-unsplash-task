@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import SearchContext from "../SearchContext";
-import Images from "./Images";
+import { Images } from "./Images";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-function Content() {
+export const Content = () => {
   const { searchResult, handleSubmit } = useContext(SearchContext);
 
   return (
@@ -25,6 +25,4 @@ function Content() {
       )}
     </div>
   );
-}
-
-export default Content;
+};
