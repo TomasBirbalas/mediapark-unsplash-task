@@ -19,46 +19,68 @@ header {
   align-items: center;
 }
 
-.search-bar {
-  width: 50%;
+.input-search,
+.btn-search {
+  padding: 12px 24px;
+}
 
+.search-form {
+  width: 50%;
+  display: flex;
   .search {
     display: flex;
     width: 100%;
-
-    .input-search,
-    .btn-search {
-      padding: 12px 24px;
-    }
+    position: relative;
+    flex-grow: 1;
     .input-search {
-      flex-grow: 1;
+      width: 100%;
       border-bottom: 1px solid $primary-color;
     }
-    .btn-search {
-      background-color: transparent;
-      border-bottom: 1px solid $primary-color;
-      cursor: pointer;
 
-      i {
+    .suggestions-block {
+      position: absolute;
+      top: 40px;
+      min-width: 300px;
+      width: fit-content;
+      background-color: $primary-color;
+      height: 0;
+      opacity: 0;
+      transition: 0.3s ease-in-out;
+      z-index: 99;
+      .suggestion {
+        padding: 24px 32px;
+        width: 100%;
+        cursor: pointer;
+        list-style: none;
+        opacity: 0;
         transition: 0.3s ease-in-out;
-      }
-
-      &:hover {
-        i {
-          transform: translateY(-6px) scale(1.4);
+        &:hover {
+          background-color: rgb(179, 179, 179);
         }
       }
     }
-  }
-  .suggestions-block {
-    display: flex;
-    .suggestion {
-      flex-grow: 1;
-      padding: 12px 24px;
-      cursor: pointer;
+    .suggestions-block.show-suggestions {
+      height: fit-content;
+      opacity: 1;
 
-      &:not(:last-child) {
-        margin-right: 12px;
+      .suggestion {
+        opacity: 1;
+      }
+    }
+  }
+
+  .btn-search {
+    background-color: transparent;
+    border-bottom: 1px solid $primary-color;
+    cursor: pointer;
+
+    i {
+      transition: 0.3s ease-in-out;
+    }
+
+    &:hover {
+      i {
+        transform: translateY(-6px) scale(1.4);
       }
     }
   }
