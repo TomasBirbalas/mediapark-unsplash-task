@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import SearchContext from "../SearchContext";
+import Suggestions from "./Suggestions";
 
 function Header() {
-  const { setSearchQuery, handleSubmit } = useContext(SearchContext);
+  const { searchQuery, setSearchQuery, handleSubmit } =
+    useContext(SearchContext);
 
   return (
     <header>
@@ -11,6 +13,7 @@ function Header() {
         <input
           type="text"
           placeholder="Search..."
+          value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onKeyPress={(event) => {
             if (event.key === "Enter") {
@@ -18,6 +21,7 @@ function Header() {
             }
           }}
         />
+        <Suggestions />
         <input type="button" onClick={handleSubmit} />
       </div>
     </header>
