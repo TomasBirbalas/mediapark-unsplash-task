@@ -45,10 +45,12 @@ export const DataProvider = ({ children }) => {
     console.log(newPage);
     fetchPhotos(newPage, searchQuery);
     setQueries((previousQuery) => {
-      const isQueryExist = previousQuery.includes(searchQuery);
-
-      if (!isQueryExist && searchQuery.length > 0) {
-        return [...previousQuery, searchQuery];
+      if (searchQuery.length > 0) {
+        const newArray = previousQuery.filter(
+          (e) => e.toLowerCase() !== searchQuery.toLocaleLowerCase()
+        );
+        console.log(newArray);
+        return [...newArray, searchQuery];
       } else {
         return [...previousQuery];
       }
