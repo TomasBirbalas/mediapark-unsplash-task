@@ -1,33 +1,24 @@
 import React, { useContext } from "react";
 import SearchContext from "../SearchContext";
+import { getLatestSearchQueries } from "../hooks/getLatestSearchQueries";
 
-export const Suggestions = ({ inputStatus }) => {
-  const { setSearchQuery } = useContext(SearchContext);
+export const Suggestions = ({ inputStatus, setInputStatus }) => {
+  const { setSearchQuery, queries, handleSubmit } = useContext(SearchContext);
 
-  const getLatestSearchQueries = (key, numberOfMaxSuggestions) => {
-    const queriesArray = localStorage.getItem(key);
-    let latestSuggestions;
-    if (queriesArray) {
-      latestSuggestions = JSON.parse(queriesArray);
-      latestSuggestions = latestSuggestions.slice(-numberOfMaxSuggestions);
-      return latestSuggestions;
-    } else {
-      return [];
-    }
-  };
-  const suggestionsArray = getLatestSearchQueries("search-queries", 5);
+  const suggestionsArray = getLatestSearchQueries(queries, 5);
 
-  const suggestions = suggestionsArray.map((suggestion, index) => {
-    return (
-      <li
-        className="suggestion"
-        onClick={(e) => setSearchQuery(suggestion)}
-        key={index}
-      >
-        {suggestion}
-      </li>
-    );
-  });
+  const suggestions = suggestionsArray.map((suggestion, index) => (
+    <li
+      className="suggestion"
+      onClick={(e) => {
+        setSearchQuery(suggestion);
+        setInputStatus(!inputStatus);
+      }}
+      key={index}
+    >
+      {suggestion}
+    </li>
+  ));
 
   return (
     <ul

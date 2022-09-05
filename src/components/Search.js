@@ -17,10 +17,12 @@ export const Search = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onClick={(e) => setInputStatus(true)}
-          onBlur={(e) => setInputStatus(false)}
           onKeyPress={(event) => event.key === "Enter" && handleSubmit()}
         />
-        <Suggestions inputStatus={inputStatus} />
+        <Suggestions
+          inputStatus={inputStatus}
+          setInputStatus={setInputStatus}
+        />
       </div>
       <button className="btn-search" type="submit">
         <i class="fa-solid fa-magnifying-glass"></i>
