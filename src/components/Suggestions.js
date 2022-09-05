@@ -3,7 +3,7 @@ import SearchContext from "../SearchContext";
 import { getLatestSearchQueries } from "../hooks/getLatestSearchQueries";
 
 export const Suggestions = ({ inputStatus, setInputStatus }) => {
-  const { setSearchQuery, queries, handleSubmit } = useContext(SearchContext);
+  const { setSearchQuery, queries } = useContext(SearchContext);
 
   const suggestionsArray = getLatestSearchQueries(queries, 5);
 
@@ -12,7 +12,7 @@ export const Suggestions = ({ inputStatus, setInputStatus }) => {
       className="suggestion"
       onClick={(e) => {
         setSearchQuery(suggestion);
-        setInputStatus(!inputStatus);
+        setInputStatus(false);
       }}
       key={index}
     >
@@ -21,9 +21,7 @@ export const Suggestions = ({ inputStatus, setInputStatus }) => {
   ));
 
   return (
-    <ul
-      className={`suggestions-block ${inputStatus ? "show-suggestions" : ""}`}
-    >
+    <ul className={`suggestions-block ${inputStatus && "show-suggestions"}`}>
       {suggestions}
     </ul>
   );

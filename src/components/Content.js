@@ -10,7 +10,7 @@ export const Content = () => {
     <div className="container">
       {searchResult.length > 0 && (
         <InfiniteScroll
-          dataLength={searchResult.length} //This is important field to render the next data
+          dataLength={searchResult.length}
           next={handleSubmit}
           hasMore={true}
           loader={<h4>Loading...</h4>}
