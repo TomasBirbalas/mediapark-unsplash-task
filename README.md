@@ -2,7 +2,6 @@
 
 The application renders photos from unsplash developer api.
 User of this app can:
-
 - search images;
 - add an image as a favorite to your favorite images catalog;
 - download images;
