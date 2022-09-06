@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
+
 import SearchContext from "../SearchContext";
 import { Images } from "./Images";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useLocation } from "react-router-dom";
 
 export const Content = () => {
   const { searchResult, handleSubmit } = useContext(SearchContext);
+
+  const location = useLocation();
 
   return (
     <div className="container">
@@ -12,13 +16,7 @@ export const Content = () => {
         <InfiniteScroll
           dataLength={searchResult.length}
           next={handleSubmit}
-          hasMore={true}
-          loader={<h4>Loading...</h4>}
-          endMessage={
-            <p style={{ textAlign: "center" }}>
-              <b>Yay! You have seen it all</b>
-            </p>
-          }
+          hasMore={location.pathname !== "/FavoriteImages" ? true : false}
         >
           <Images images={searchResult} />
         </InfiniteScroll>

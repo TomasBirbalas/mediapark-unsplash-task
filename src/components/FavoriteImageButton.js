@@ -19,7 +19,6 @@ export const FavoriteImageButton = ({
     };
 
     setFavoriteImages((favoriteImages) => {
-      console.log(image);
       if (favoriteImage.status) {
         const newArray = favoriteImages.filter(
           (image) => image.status === true

@@ -108,7 +108,7 @@ export const DataProvider = ({ children }) => {
         }
       });
     }
-  }, []);
+  }, [location.pathname]);
 
   return (
     <SearchContext.Provider

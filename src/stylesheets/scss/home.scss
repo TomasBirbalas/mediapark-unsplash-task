@@ -33,6 +33,15 @@ header {
   justify-content: space-between;
   align-items: center;
 
+  a {
+    margin: 12px 0;
+  }
+
+  @include phone-landscape {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
   @include desktop {
     flex-direction: row;
   }
@@ -44,12 +53,10 @@ header {
 }
 
 .search-form {
-  width: 100%;
   display: flex;
 
   .search {
     display: flex;
-    width: 100%;
     position: relative;
     flex-grow: 1;
     .input-search {
@@ -110,6 +117,10 @@ header {
   }
   @include desktop {
     width: 50%;
+  }
+  @include phone-landscape {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 
@@ -208,33 +219,34 @@ header {
 
 .top-to-btm {
   position: relative;
-}
-.icon-position {
-  position: fixed;
-  bottom: 40px;
-  right: 25px;
-  z-index: 9999;
-}
-.icon-style {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2em;
-  background-color: #000;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-  color: #fff;
-  cursor: pointer;
-  animation: movebtn 3s ease-in-out infinite;
-  transition: all 0.5s ease-in-out;
-}
-.icon-style:hover {
-  animation: none;
-  background: #fff;
-  color: #000;
-  border: 2px solid #000;
+
+  .icon-position {
+    position: fixed;
+    bottom: 40px;
+    right: 25px;
+    z-index: 9999;
+  }
+  .icon-style {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    background-color: #000;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    color: #fff;
+    cursor: pointer;
+    animation: movebtn 3s ease-in-out infinite;
+    transition: all 0.5s ease-in-out;
+  }
+  .icon-style:hover {
+    animation: none;
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+  }
 }
 @keyframes movebtn {
   0% {

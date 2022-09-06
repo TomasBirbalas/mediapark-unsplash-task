@@ -1,6 +1,5 @@
 import React from "react";
 import { FavoriteImageButton } from "./FavoriteImageButton";
-import { Link } from "react-router-dom";
 
 export const SingleImage = ({ image, setFavoriteImages, favoriteImages }) => {
   const imageSpan = (image) => {
@@ -21,7 +20,7 @@ export const SingleImage = ({ image, setFavoriteImages, favoriteImages }) => {
           setFavoriteImages={setFavoriteImages}
           favoriteImages={favoriteImages}
         />
-        <a href={image.links.download} target="_blank">
+        <a href={image.links.download} target="_blank" rel="noreferrer">
           <i className="fa-regular fa-circle-down"></i>
         </a>
       </div>
