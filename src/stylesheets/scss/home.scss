@@ -1,3 +1,5 @@
+@import "./breakpoints";
+
 $primary-color: rgb(199, 199, 199);
 
 * {
@@ -14,9 +16,14 @@ button {
 
 header {
   display: flex;
+  flex-direction: column;
   margin: 32px 5%;
   justify-content: space-between;
   align-items: center;
+
+  @include desktop {
+    flex-direction: row;
+  }
 }
 
 .input-search,
@@ -25,8 +32,9 @@ header {
 }
 
 .search-form {
-  width: 50%;
+  width: 100%;
   display: flex;
+
   .search {
     display: flex;
     width: 100%;
@@ -46,7 +54,7 @@ header {
       height: 0;
       opacity: 1;
       transition: 0.3s ease-in-out;
-      z-index: 99;
+      z-index: 9999;
       .suggestion {
         display: block;
         padding: 0;
@@ -88,11 +96,14 @@ header {
       }
     }
   }
+  @include desktop {
+    width: 50%;
+  }
 }
 
 .grid-wrapper {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 25vh;
   grid-gap: 16px;
   grid-auto-flow: dense;
@@ -120,9 +131,11 @@ header {
       z-index: 999;
       background-color: rgba($primary-color, 0.5);
 
-      button {
+      button,
+      a {
         background-color: transparent;
         padding: 12px;
+        color: #000;
         transition: 0.3s ease-in-out;
 
         &:hover {
@@ -156,6 +169,21 @@ header {
       transition: 0.5s ease-in-out;
       z-index: 1;
     }
+  }
+  @include phone-landscape {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 50vh;
+  }
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 25vh;
+  }
+  @include tablet-landscape {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 25vh;
+  }
+  @include desktop {
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 
